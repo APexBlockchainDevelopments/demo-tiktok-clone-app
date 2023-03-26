@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React from 'react'
+import videoMetaData from './metadata/videos.json'
 import './App.css';
+import Video from './components/Video'
 
 function App() {
+  const videos = videoMetaData
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container'>
+          {videos.map((video, index)=>{
+            return(
+              <Video key={index} channel={video.channel} description={video.description} song={video.song} likes={video.likes}
+              shares={video.shares} messages={video.messages} url={video.url}></Video>
+            )
+          })}
+      </div>
     </div>
   );
 }
